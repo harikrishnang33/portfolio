@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Harikrishnan G — Backend Engineer</title>
+<meta name="description" content="Harikrishnan G — Backend Engineer. Payment infrastructure, distributed systems, and revenue-growth backends.">
+<style>
+  :root {
+    --bg: #0b0e14; --panel: #11151f; --border: #1f2630;
+    --text: #c9d1d9; --muted: #8b949e; --accent: #56d4dd; --plus: #7ee787;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+    font-family: ui-monospace, "SF Mono", "JetBrains Mono", "Fira Code", Menlo, Consolas, monospace;
+    font-size: 15px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  .wrap { max-width: 820px; margin: 0 auto; padding: 56px 24px 96px; }
+
+  .hero { margin-bottom: 36px; }
+  .hero h1 { font-size: clamp(30px, 7vw, 46px); margin: 0; font-weight: 700; letter-spacing: -0.01em; color: #fff; min-height: 1.2em; }
+  .hero .role { color: var(--accent); font-size: clamp(15px, 3.5vw, 19px); margin: 8px 0 0; }
+  .hero .role .yrs { color: var(--muted); }
+  .hero .links { margin-top: 18px; display: flex; gap: 20px; flex-wrap: wrap; font-size: 14px; }
+  .hero .links a { color: var(--text); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 1px; }
+  .hero .links a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+  .cursor { display: inline-block; width: .6ch; height: 1em; background: var(--accent); margin-left: 3px; vertical-align: -2px; animation: blink 1.1s steps(1) infinite; }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* skills sub-section */
+  .skills { margin: 0 0 4px; }
+  .skills .grp { display: grid; grid-template-columns: 96px 1fr; column-gap: 14px; align-items: start; margin-bottom: 14px; }
+  .skills .label { font-size: 13px; color: var(--muted); padding-top: 5px; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { font-size: 13px; color: var(--text); background: var(--panel); border: 1px solid var(--border); border-radius: 6px; padding: 4px 10px; line-height: 1.3; }
+  @media (max-width: 480px) {
+    .skills .grp { grid-template-columns: 1fr; }
+    .skills .label { padding-top: 0; margin-bottom: 8px; }
+  }
+
+  .tagline { color: var(--muted); font-size: 13px; margin: 0 0 30px; padding-left: 2px; }
+  .tagline a { color: var(--accent); text-decoration: none; }
+
+  h2.sec { font-size: 13px; letter-spacing: .02em; color: var(--muted); font-weight: 600; margin: 44px 0 14px; }
+  .exp { margin-bottom: 2px; }
+  .cohead { display: flex; align-items: center; gap: 10px; width: 100%; background: none; border: none; cursor: pointer;
+    font: inherit; color: var(--muted); font-size: 13px; letter-spacing: .02em; font-weight: 600;
+    margin: 20px 0 0; padding: 6px 2px; text-align: left; }
+  .cohead:hover { color: var(--text); background: rgba(255,255,255,.03); border-radius: 6px; }
+  .cohead .plus { color: var(--plus); width: 14px; flex: none; text-align: center; font-weight: 700; letter-spacing: 0; }
+  .exp-body { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .25s ease; }
+  .exp.open .exp-body { grid-template-rows: 1fr; }
+  .exp-inner { overflow: hidden; }
+  .exp.open .exp-inner { margin-left: 7px; padding: 8px 0 6px 18px; border-left: 1px solid var(--border); }
+  @media (max-width: 640px) {
+    .exp.open .exp-inner { margin-left: 0; padding-left: 0; border-left: none; }
+  }
+  .co { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 0 0 6px; padding-bottom: 8px; border-bottom: 1px solid var(--border); }
+  .co .name { color: var(--text); font-weight: 600; font-size: 16px; }
+  .co .name .at { color: var(--accent); }
+  .co .period { color: var(--muted); font-size: 13px; }
+  .note { color: var(--muted); font-size: 14px; margin: 6px 0 0; padding-left: 2px; }
+  .note .tag { margin-left: 8px; }
+
+  .role { margin: 18px 0 4px; }
+  .role-head { display: flex; align-items: baseline; justify-content: space-between; gap: 10px; flex-wrap: wrap; margin-bottom: 2px; }
+  .role-head .rt { color: var(--text); font-weight: 600; font-size: 14.5px; }
+  .role-head .rt::before { content: "▸ "; color: var(--accent); }
+  .role-head .rp { color: var(--muted); font-size: 12.5px; }
+
+  .item { border-bottom: 1px solid var(--border); }
+  .item:last-child { border-bottom: none; }
+  .row { width: 100%; background: none; border: none; cursor: pointer; color: var(--text); font: inherit; text-align: left;
+    display: flex; align-items: flex-start; gap: 12px; padding: 12px 4px; line-height: 1.5; }
+  .row:hover { color: #fff; background: rgba(255,255,255,.03); border-radius: 6px; }
+  .row:focus-visible { outline: 1px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+  .plus { color: var(--plus); font-weight: 700; width: 14px; flex: none; text-align: center; user-select: none; -webkit-user-select: none; }
+  .row, .cohead, .ttl { -webkit-user-select: text; user-select: text; }
+  .cohead .plus { -webkit-user-select: none; user-select: none; }
+  .row .ttl { flex: 1; } .row .ttl .m { color: var(--accent); }
+  .row .ttl .when { color: var(--muted); font-weight: 400; font-size: 12.5px; margin-left: 6px; }
+  .detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .22s ease; }
+  .item.open .detail { grid-template-rows: 1fr; }
+  .detail > div { overflow: hidden; }
+  .detail p { margin: 0 0 12px; padding: 0 4px 0 26px; color: var(--muted); font-size: 14px; }
+  .tags { padding: 0 4px 16px 26px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag { font-size: 12px; color: var(--accent); background: rgba(86,212,221,.08); border: 1px solid var(--border); border-radius: 999px; padding: 2px 10px; }
+  .chips { padding: 0 4px 12px 26px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .chip { font-size: 11.5px; color: var(--muted); background: rgba(255,255,255,.03); border: 1px solid var(--border); border-radius: 999px; padding: 2px 9px; }
+  .chips:not(.expanded) .chip:nth-child(n+4) { display: none; }
+  .chip-toggle { font: inherit; font-size: 11.5px; cursor: pointer; color: #aeb6c2; background: #232a35; border: 1px solid #2b313c; border-radius: 999px; padding: 2px 9px; }
+  .chip-toggle:hover { background: #2c333f; color: #fff; }
+
+  footer { margin-top: 56px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--muted); font-size: 13px; display: flex; gap: 18px; flex-wrap: wrap; align-items: center; }
+  footer a { color: var(--text); text-decoration: none; } footer a:hover { color: var(--accent); }
+  footer .alt { margin-left: auto; }
+  @media (max-width: 600px) {
+    .wrap { padding: 40px 18px 72px; }
+    .hero { margin-bottom: 30px; }
+    .hero .links { gap: 16px; }
+    .cohead { padding: 11px 2px; }
+    .row { padding: 13px 2px; }
+    .detail p, .tags, .chips { padding-left: 20px; }
+    h2.sec { margin: 36px 0 12px; }
+  }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+  <header class="hero">
+    <h1><span id="type">Harikrishnan G</span><span class="cursor"></span></h1>
+    <p class="role">Backend Engineer <span class="yrs">· 5 years</span></p>
+    <nav class="links">
+      <a href="https://github.com/harikrishnang33" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/harikrishnang33" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:hari.krishnan.g.0303@gmail.com">Email</a>
+    </nav>
+  </header>
+
+  <h2 class="sec">$ ls skills</h2>
+  <div class="skills">
+    <div class="grp"><span class="label">languages</span><div class="pills"><span class="pill">TypeScript</span><span class="pill">Go</span><span class="pill">Python</span><span class="pill">Ruby</span><span class="pill">Java</span></div></div>
+    <div class="grp"><span class="label">frameworks</span><div class="pills"><span class="pill">Node.js</span><span class="pill">FastAPI</span><span class="pill">Gin</span><span class="pill">Ruby on Rails</span><span class="pill">Spring Boot</span></div></div>
+    <div class="grp"><span class="label">databases</span><div class="pills"><span class="pill">PostgreSQL</span><span class="pill">MySQL</span><span class="pill">MongoDB</span><span class="pill">Redis</span></div></div>
+    <div class="grp"><span class="label">others</span><div class="pills"><span class="pill">Docker</span><span class="pill">AWS S3</span><span class="pill">EC2</span><span class="pill">CloudWatch</span><span class="pill">ECS</span><span class="pill">Parameter Store</span><span class="pill">Grafana</span><span class="pill">ArgoCD</span><span class="pill">NewRelic</span><span class="pill">Stripe API</span><span class="pill">Shopify API</span><span class="pill">Slack API</span><span class="pill">Sidekiq</span></div></div>
+  </div>
+
+  <!-- EXPERIENCE -->
+  <h2 class="sec">$ ls experience</h2>
+
+  <!-- ULTRAHUMAN -->
+  <div class="exp open">
+  <button class="cohead" aria-expanded="true"><span class="plus">−</span><span>$ ls ultrahuman</span></button>
+  <div class="exp-body"><div class="exp-inner">
+  <div class="co">
+    <span class="name">Ultrahuman <span class="at">@</span> Backend Engineer</span>
+    <span class="period">Mar 2026 – Present · 4 mos</span>
+  </div>
+
+  <div class="item open"><button class="row" aria-expanded="true"><span class="plus">−</span><span class="ttl">Generic upsell card framework — <span class="m">new subscription revenue in 3 months</span></span></button>
+    <div class="detail"><div><p>Designed a reusable upsell framework (pluggable trigger evaluators, lifecycle tracking, priority cascading) powering C&amp;O Pro, Cardio &amp; AFib upsells driven by RHR, HRV, sleep and cycle data; conversions attributed via placement-based UTM tracking.</p><div class="tags"><span class="tag">Ruby on Rails</span><span class="tag">MySQL</span><span class="tag">MongoDB</span><span class="tag">Redis</span><span class="tag">Sidekiq</span></div></div></div>
+  </div>
+  <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Mental-health content recommendation engine — <span class="m">15 emotional smart tags</span></span></button>
+    <div class="detail"><div><p>Personalized BetterHelp content surfaced from logged emotional tags. Intent-tiered 3-article journeys, gender-scoped configs, state-machine interaction tracking, and per-day frequency capping.</p><div class="chips"><span class="chip">Angry</span><span class="chip">Anxious</span><span class="chip">Doomscrolling</span><span class="chip">Exhausted</span><span class="chip">Feeling Blue</span><span class="chip">Irritable</span><span class="chip">Low Energy</span><span class="chip">Mood Swings</span><span class="chip">New City</span><span class="chip">Overthinking</span><span class="chip">PMS</span><span class="chip">Restless</span><span class="chip">Self Critical</span><span class="chip">Stressed</span><span class="chip">Up Late</span><button class="chip-toggle" aria-expanded="false">+ more</button></div><div class="tags"><span class="tag">Ruby on Rails</span><span class="tag">MySQL</span><span class="tag">Redis</span><span class="tag">State machine</span><span class="tag">i18n</span><span class="tag">ActiveAdmin</span></div></div></div>
+  </div>
+  <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Blood Vision retest upsell — <span class="m">19 biomarker groups</span></span></button>
+    <div class="detail"><div><p>YAML-driven retest upsell with weighted biomarker scoring and abandoned-cart recovery for upload journeys. Shipped as part of a growth initiative projected to drive incremental quarterly revenue.</p><div class="chips"><span class="chip">Lipids</span><span class="chip">Cardio Risk</span><span class="chip">Metabolic</span><span class="chip">Inflammation</span><span class="chip">Liver</span><span class="chip">Kidney</span><span class="chip">Thyroid</span><span class="chip">Electrolytes</span><span class="chip">Anemia / Iron</span><span class="chip">Immunity</span><span class="chip">Clotting</span><span class="chip">Vitamins</span><span class="chip">Minerals</span><span class="chip">Hormones (F)</span><span class="chip">Hormones (M)</span><span class="chip">Omega-3</span><span class="chip">Pancreas</span><span class="chip">Heavy Metals</span><span class="chip">Urine Panel</span><button class="chip-toggle" aria-expanded="false">+ more</button></div><div class="tags"><span class="tag">Ruby on Rails</span><span class="tag">YAML config</span></div></div></div>
+  </div>
+  <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">CI job to detect unauthenticated API endpoints</span></button>
+    <div class="detail"><div><p>Inspects controller callback chains at build time to flag endpoints missing authentication before they ship — surfaced and secured a previously-unprotected admin GraphQL controller.</p><div class="tags"><span class="tag">CI automation</span><span class="tag">Ruby</span></div></div></div>
+  </div>
+  <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Shopify fulfillment sync + chargeback automation</span></button>
+    <div class="detail"><div><p>Pushes post-shipment tracking links into Shopify for automated chargeback evidence, plus an HMAC-verified disputes webhook delivering real-time Slack alerts for dispute visibility.</p><div class="tags"><span class="tag">Ruby on Rails</span><span class="tag">Shopify REST API</span><span class="tag">HMAC</span><span class="tag">Slack Block Kit</span></div></div></div>
+  </div>
+  <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Payment idempotency — fixed duplicate CGM shipments from Stripe retries</span></button>
+    <div class="detail"><div><p>Stripe webhook retries were creating duplicate sensor shipments. Implemented idempotency via event-ID deduplication and a DB unique index, with billing-period guards before shipment creation.</p><div class="tags"><span class="tag">Ruby on Rails</span><span class="tag">MySQL</span><span class="tag">Stripe webhooks</span></div></div></div>
+  </div>
+
+  </div></div></div><!-- /exp -->
+
+  <!-- KEYVALUE (career growth) -->
+  <div class="exp open">
+  <button class="cohead" aria-expanded="true"><span class="plus">−</span><span>$ ls keyvalue</span></button>
+  <div class="exp-body"><div class="exp-inner">
+  <div class="co">
+    <span class="name">KeyValue Software Systems</span>
+    <span class="period">Jul 2021 – Feb 2026 · 4 yrs 8 mos</span>
+  </div>
+
+  <div class="role">
+    <div class="role-head"><span class="rt">Senior Software Engineer</span><span class="rp">Feb 2025 – Feb 2026</span></div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Designed a SQL-backed job-queue architecture</span></button>
+      <div class="detail"><div><p>Designed a SQL-as-queue (a RabbitMQ replacement) for rate-limit-aware consumption of image/video generation across 15 model providers with limits ranging from 4 RPM to 150 RPS — covering task prioritization, exponential-backoff retries, and recovery for stuck jobs.</p><div class="tags"><span class="tag">System Design</span><span class="tag">MySQL</span><span class="tag">Node.js</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Chat-based generation agents — <span class="m">+20% platform usage</span></span></button>
+      <div class="detail"><div><p>Conversational image/video generation agents built with Google ADK — a natural-language alternative to the platform's detailed configuration controls, lifting usage by 20%.</p><div class="tags"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Google ADK</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">AI model integration — <span class="m">4 request types</span></span></button>
+      <div class="detail"><div><p>Refactored the GenAI tools codebase into an extensible provider architecture and integrated multiple image/video models across 4 request types.</p><div class="chips expanded"><span class="chip">text → image</span><span class="chip">image → image</span><span class="chip">text → video</span><span class="chip">image → video</span></div><div class="tags"><span class="tag">FastAPI</span><span class="tag">Provider abstraction</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="role">
+    <div class="role-head"><span class="rt">Software Engineer</span><span class="rp">Aug 2023 – Feb 2025</span></div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Automated student report generation (OpenAI Assistant)</span></button>
+      <div class="detail"><div><p>Built backend APIs to generate and publish student assignment reports, integrating an OpenAI Assistant for automated generation and context management.</p><div class="tags"><span class="tag">NestJS</span><span class="tag">FastAPI</span><span class="tag">OpenAI</span><span class="tag">PostgreSQL</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Multi-tenant architecture with request-scoped isolation</span></button>
+      <div class="detail"><div><p>Re-architected the backend for multi-tenancy using School ID as the tenant key, leveraging async local storage for request-scoped context and strict data isolation.</p><div class="tags"><span class="tag">NestJS</span><span class="tag">PostgreSQL</span><span class="tag">AsyncLocalStorage</span><span class="tag">TypeORM</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Pagination optimization — <span class="m">10–20% lower query latency</span></span></button>
+      <div class="detail"><div><p>Removed the default JPA <code>findAll</code> count query and fetch one extra record to detect the next page — eliminating a full-table count on every paginated request.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">JPA</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Unified notification-service authentication</span></button>
+      <div class="detail"><div><p>Refactored the notification service auth module with an interceptor and custom validators to handle all authentication request types through a single path.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">Interceptors</span></div></div></div>
+    </div>
+  </div>
+
+  <div class="role">
+    <div class="role-head"><span class="rt">Associate Software Engineer</span><span class="rp">Jul 2021 – Aug 2023</span></div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">BigQuery → MongoDB migration — <span class="m">40–50% cost cut</span></span></button>
+      <div class="detail"><div><p>Migrated order-report generation off BigQuery to self-hosted MongoDB, re-architecting the data layer in a Go + Gin backend while holding the required scalability and performance.</p><div class="tags"><span class="tag">Go</span><span class="tag">Gin</span><span class="tag">MongoDB</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Event-driven post-delivery consistency</span></button>
+      <div class="detail"><div><p>Order-notification events were firing on a JPA <code>@PostUpdate</code> callback — before the transaction committed — so a rollback could emit an orphaned event. Re-published them through a single async Spring <code>@TransactionalEventListener</code> that fires only in the after-commit phase, so an order is notified exactly when its shipment reaches a terminal state and the change is durably persisted.</p><div class="tags"><span class="tag">Spring Boot</span><span class="tag">TransactionalEventListener</span><span class="tag">JPA</span><span class="tag">Event-driven</span></div></div></div>
+    </div>
+    <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Operational cost &amp; driver cash-reconciliation features</span></button>
+      <div class="detail"><div><p>Built segment-based discounts, pickup-point discounts, platform fees, shipment-level delivery charges, and a cash-reconciliation system tracking driver collections through to settlement.</p><div class="tags"><span class="tag">Node.js</span><span class="tag">Spring Boot</span><span class="tag">Go</span><span class="tag">MySQL</span><span class="tag">Redis</span></div></div></div>
+    </div>
+  </div>
+
+  </div></div></div><!-- /exp -->
+
+  <!-- PROJECTS -->
+  <h2 class="sec">$ ls projects</h2>
+  <div class="proj">
+  <div class="item"><button class="row" aria-expanded="false"><span class="plus">+</span><span class="ttl">Fake News Detection <span class="when">Feb 2021 – May 2021 · GEC Thrissur</span></span></button>
+    <div class="detail"><div><p>Built an application that detects fake news in text messages and links using a Random Forest model, returning a confidence score for each input.</p><div class="tags"><span class="tag">Python</span><span class="tag">scikit-learn</span><span class="tag">Flutter</span></div></div></div>
+  </div>
+  </div>
+
+  <!-- EDUCATION -->
+  <h2 class="sec">$ ls education</h2>
+  <div class="co" style="border:none;margin-bottom:2px">
+    <span class="name">Government Engineering College, Thrissur</span>
+    <span class="period">Aug 2017 – Jun 2021</span>
+  </div>
+  <p class="note">B.Tech · Computer Science &amp; Engineering</p>
+
+  <footer>
+    <span>© 2026 Harikrishnan G</span>
+  </footer>
+
+</main>
+
+<script>
+  (function () {
+    var el = document.getElementById("type"), text = (el.textContent || "Harikrishnan G").trim(), i = 0;
+    el.textContent = "";
+    (function tick(){ if (i <= text.length){ el.textContent = text.slice(0, i); i++; setTimeout(tick, 95); } })();
+  })();
+  document.querySelectorAll(".item .row").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var item = btn.closest(".item"), open = item.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.querySelector(".plus").textContent = open ? "−" : "+";
+    });
+  });
+  document.querySelectorAll(".cohead").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var exp = btn.closest(".exp"), open = exp.classList.toggle("open");
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.querySelector(".plus").textContent = open ? "−" : "+";
+    });
+  });
+  document.querySelectorAll(".chip-toggle").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var chips = btn.closest(".chips"), expanded = chips.classList.toggle("expanded");
+      btn.textContent = expanded ? "− less" : "+ more";
+      btn.setAttribute("aria-expanded", expanded ? "true" : "false");
+    });
+  });
+</script>
+</body>
+</html>
